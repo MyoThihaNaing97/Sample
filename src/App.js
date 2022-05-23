@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import './style.css'
+import FruitList from "./view/fruit";
+class App extends React.Component {
+ constructor(props){
+   super(props);
+   this.state={
+     fruits:[
+       {name:"Apple"},
+       {name:"Orange"},
+       {name:"Lemon"}
+      ],
+      userdata:[
+        {name:"Mg Mg", age:"15"},
+        {name:"Ma Ma", age:"21"},
+        {name:"Mya Mya", age:"16"},
+      ]
+   };
+ }
+  render() {
+    return (
+      <div className="fruit-container">
+        <h1>Hello World</h1>
+        {/* <FruitList userdata={this.state.userdata}/> */}
+        <FruitList fruits={this.state.fruits}/>
+      </div>
+    )
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  }
 }
-
-export default App;
+export default App
