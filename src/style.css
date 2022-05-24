@@ -1,8 +1,8 @@
+
 h1{
     color: rgb(10, 112, 230);
     text-align: center;
 }
-/* .fruit-container{
-    display: flex;
-
-} */
+.fruit-register-container{
+    margin-left: 400px;
+}
