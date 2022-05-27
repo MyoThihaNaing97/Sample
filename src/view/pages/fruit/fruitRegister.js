@@ -1,5 +1,5 @@
 import React from "react";
-const fruitRegister = (props)=>{
+const FruitRegister = (props)=>{
     return(
         <div className="fruit-register-container">
             <input type="text" value={props.fruitName} onChange={props.handleChange} style={{marginLeft:"20px"}}/><br/>
@@ -20,4 +20,4 @@ const fruitRegister = (props)=>{
 //          )      
 //      }
 //  }
- export default fruitRegister;
+ export default FruitRegister;

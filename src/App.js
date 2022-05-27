@@ -1,107 +1,103 @@
-import React,{useState,useEffect} from "react";
-import './style.css'
-import FruitList from "./view/fruit";
-import FruitRegister from "./view/fruitRegister";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import './style.css';
+
+// import Home from "./view/pages/index";
+// import ProfileIndex from "./view/profile/profileIndex";
+// import FruitIndex from "./view/pages/fruit/fruitIndex";
+// import FruitList from "./view/fruit";
+// import FruitRegister from "./view/fruitRegister";
 // import Clear from "./view/Clear"
+// import Form from "./view/Form";
+// const Home = React.lazy(() => import("./view/pages/index"));
+// const Profile = React.lazy(() => import("./view/profile/profileIndex"));
+// const Fruit = React.lazy(() => import("./view/pages/fruit/fruitIndex"));
+
+const Loading = (<div>
+  <h1>Loading</h1>
+</div>);
+const Main = React.lazy(() => import("./view/student/Main"));
+const Register = React.lazy(() => import("./view/register/Register"));
+const EmployeeList =React.lazy(()=> import("./view/employee/EmployeeList"));
+const AboutUs =React.lazy(()=> import("./view/register/AboutUs"));
+const Profile = React.lazy(() => import("./view/profile/profileIndex"));
+const Error =React.lazy(()=> import("./view/error/Error"));
 
 const App = () => {
-  const [fruits, setFruits] = useState([
-    { name: "Apple", price: 3000 },
-    { name: "Orange", price: 100 },
-    { name: "Lemon", price: 3000 },
-    { name: "Strawberry", price: 2500 },
-    { name: "Berry", price: 1330 }
-  ]);
-  const [fruitName, setFruitName] = useState("");
-  const [title, setTitle] = useState("Fruit List");
-
-  useEffect(()=>{
-    setTimeout(()=>{
-      setTitle("Fruit Data")
-    },3000);
-    let price =fruits.filter((item)=>{
-      return item.price === 3000;
-    
-    })
-    setFruits(price);
-    console.log(price)
-    // let price =fruits.filter((=>{
-    //   return item.price===3000;
-      
-    //   setFruits(price);
-    // }))
-    console.log(price);
-  },[])
-
-
-  const handleChange = (e)=>{
-    setFruitName(e.target.value);
-  }
-  const addFruit =()=>{
-    setFruits([...fruits,{name:fruitName}]);
-    setFruitName("");
-  }
+  // const [Employee,setEmployee] = useState([
+  //   {
+  //       id: '1',
+  //       username: "aungkhantkyaw",
+  //       fullname: "Aung Khant Kyaw",
+  //       email: "aungkhantkyaw@gmail.com",
+  //       ph_no: "09123456789",
+  //       address: "No 123, Latha St, Latha Tsp, Yangon, Myanmar"
+  //   },
+  //   {
+  //       id: '2',
+  //       username: "zinminmyat",
+  //       fullname: "Zin Min Myat",
+  //       email: "zinminmyat@gmail.com",
+  //       ph_no: "0948296244",
+  //       address: "No 123, Latha St, Latha Tsp, Yangon, Myanmar"
+  //   },
+  //   {
+  //       id: '3',
+  //       username: "supyaemaung",
+  //       fullname: "Su Pyae Maung",
+  //       email: "supyaemaung@gmail.com",
+  //       ph_no: "0992857364",
+  //       address: "No 123, Latha St, Latha Tsp, Yangon, Myanmar"
+  //   },
+  //   {
+  //       id: '4',
+  //       username: "ayethirimon",
+  //       fullname: "Aye Thiri Mon",
+  //       email: "ayethirimon@gmail.com",
+  //       ph_no: "092283930771",
+  //       address: "No 123, Latha St, Latha Tsp, Yangon, Myanmar"
+  //   },
+  //   {
+  //       id: '5',
+  //       username: "eieihtwe",
+  //       fullname: "Ei Ei Htwe",
+  //       email: "eieihtwe@gmail.com",
+  //       ph_no: "09758917304",
+  //       address: "No 123, Latha St, Latha Tsp, Yangon, Myanmar"
+  //   }
+  // ]);
+  // const [view,setView]=useState([]);
+  // const detailClick=(data)=>{    
+  //    setView(data);
+  // }
   return (
-    <div className="fruit-container">
-      <h1>{title}</h1>
-      <FruitList fruits={fruits} />
-      <FruitRegister fruitName={fruitName}
-        handleChange={handleChange}
-        addFruit={addFruit} />
-    </div>
+    <BrowserRouter>
+      <React.Suspense fallback={Loading}>
+        <Switch>
+          <Route exact path='/' component={Main} />
+          <Route path='/register'component={Register}/>
+          <Route path='/employee' component={EmployeeList} />
+          <Route path='/aboutus' component={AboutUs}/>
+          <Route path="/profile" component={Profile} />
+          <Route path="/404error" component={Error}/>
+          <Route>
+            <Redirect to="/404error" />
+          </Route>
+        </Switch>
+      </React.Suspense>
+    </BrowserRouter>
   )
+  // <BrowserRouter>
+  //   <React.Suspense fallback={Loading}>
+  //     <Switch>
+  //         <Route exact path="/" component={Home} />
+  //         <Route path="/profile" component={Profile} />
+  //         <Route path="/fruit" component={Fruit} />
+  //       <Route>
+  //         <Redirect to="/" />
+  //       </Route>
+  //     </Switch>
+  //   </React.Suspense>
+  // </BrowserRouter>
 }
-// Class Component
-// class App extends React.Component {
-//  constructor(props){
-//    super(props);
-//    this.state={
-//      fruits:[
-//        {name:"Apple",price:3000},
-//        {name:"Orange",price:100},
-//        {name:"Lemon",price:3000},
-//        {name:"Avocado",price:2000},
-//        {name:"Watermelon",price:3000},
-//        {name:"Strawberry",price:1000},
-//       ],
-//       fruitName:"",
-//       title: "Fruit List"
-//    };
-
-//  }
-
-//  componentDidMount (){
-//   setTimeout(() => {
-//     this.setState({title:"Fruit Data"})
-//   }, 3000);
-// };
-// componentDidUpdate() {
-//   alert("Update")
-// }
-//  handleChange = (e)=>{
-//    this.setState({fruitName:e.target.value})
-//  }
-//  addFruit = ()=>{
-//    this.setState({fruits:[...this.state.fruits,{name:this.state.fruitName}],
-//     fruitName:""
-//   })
-
-// }
-
-//   render() {
-
-//     return (
-//       <div className="fruit-container">
-//         <h1>{this.state.title}</h1>
-//         {/* <FruitList userdata={this.state.userdata}/> */}
-//         <FruitList fruits={this.state.fruits}/>
-//         <FruitRegister fruitName={this.state.fruitName} 
-//         handleChange={this.handleChange}
-//         addFruit={this.addFruit} />
-//         {/* <Clear clear={this.clear}/> */}
-//       </div>
-//     )
-
-//   }
-// }
-export default App
+export default App;
