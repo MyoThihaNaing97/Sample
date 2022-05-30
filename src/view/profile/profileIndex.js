@@ -1,24 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const ProfileIndex = () => {
     const location = useLocation();
-
-    useEffect(() => {
-        console.log(location.state)
+    const [user,SetUser]=useState({
+        first_name:"",
+        last_name:"",
+        email:"",
+        avatar:""
+    });
+    // const { id } = useParams();
+    // useEffect(() => {
+    //   loadUser();
+    // }, []);
+    // const loadUser = async () => {
+    // };
+    // const { id } = useParams();
+    // useEffect(() => {
+    //     (async ()=>{
+    //         const res = await axios.get(`https://reqres.in/api/users/${id}`);
+    //         SetUser(res.data.data);
+    //     })()
+    // });
+     // console.log(location.state)
+     useEffect(()=>{
         if (location.state !== undefined) {
-            SetUserName(location.state.username)
-            SetFullName(location.state.fullname)
-            SetEmail(location.state.email)
-            SetPhNo(location.state.ph_no)
-            SetAddress(location.state.address)
+            SetUser(location.state)
         }
-    })
-    const [username, SetUserName] = useState("");
-    const [fullname, SetFullName] = useState("");
-    const [email, SetEmail] = useState("");
-    const [ph_no, SetPhNo] = useState("");
-    const [address, SetAddress] = useState("");
+     })
+        
+            // SetUserName(location.state.username)
+            // SetFullName(location.state.fullname)
+            // SetEmail(location.state.email)
+            // SetPhNo(location.state.ph_no)
+            // SetAddress(location.state.address)
+       
+    // const [username, SetUserName] = useState("");
+    // const [fullname, SetFullName] = useState("");
+    // const [email, SetEmail] = useState("");
+    // const [ph_no, SetPhNo] = useState("");
+    // const [address, SetAddress] = useState("");
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,48 +63,52 @@ const ProfileIndex = () => {
             <div style={{display:'flex',flexDirection:'column', alignItems:'center'}}>
                 <h1>Employee Detail</h1>
             </div>
-                <div className="row mb-3 ">
-                    <div className="col-4">
-                        <label>UserName :</label>
+            <div style={{display:'grid',flexDirection:'column', alignItems:'center'}}>
+            <div className="row mb-3 ">
+                    <div className="col">
+                        <label style={{textAlign:'end'}}>FirstName:</label>
                     </div>
-                    <div className="col-4">
-                       {username}
-                    </div>
-                </div>
-                <div className="row mb-3">
-                    <div className="col-4">
-                        <label>FullName :</label>
-                    </div>
-                    <div className="col-4">
-                        {fullname}
+                    <div className="col">
+                        <label style={{textAlign:'left'}}>{user.first_name}</label>
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col-4">
-                        <label>Email :</label>
+                    <div className="col">
+                        <label style={{textAlign:'end'}} >LastName:</label>
                     </div>
-                    <div className="col-4">
-                        {email}
+                    <div className="col">
+                        <label style={{textAlign:'left'}}>{user.last_name}</label>
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col-4">
+                    <div className="col">
+                        <label style={{textAlign:'end'}}>Email:</label>
+                    </div>
+                    <div className="col">
+                        <label style={{textAlign:'left'}}>{user.email}</label>
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <div className="col">
+                        <label style={{textAlign:'end'}}>Avatar:</label>
+                    </div>
+                    <div className="col">
+                        <img src={user.avatar} style={{textAlign:'end'}}/>
+                    </div>
+                </div>
+                {/* <div className="row mb-3">
+                    <div className="col-2">
                         <label>Ph No :</label>
-                    </div>
-                    <div className="col-4">
                         {ph_no}
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col-4">
+                    <div className="col-2">
                         <label>Address :</label>
-                    </div>
-                    <div className="col-4">
                         {address}
                     </div>
-                </div>
-
-
+                </div> */}
+            </div>
         </>
     )
 }

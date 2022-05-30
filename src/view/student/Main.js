@@ -15,6 +15,7 @@ const Main = () => {
                         <a className="nav-link" href="/register">Register</a>
                         <a className="nav-link" href="/employee">EmployeeList</a>
                         <a className="nav-link" href="/aboutus">About Us</a>
+                        <a className="nav-link" href="/aboutus">UserList</a>
                     </div>
                 </div>
             </div>

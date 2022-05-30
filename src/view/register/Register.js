@@ -18,6 +18,7 @@ const Register =()=>{
                         <a className="nav-link" href="/register">Register</a>
                         <a className="nav-link" href="/employee">EmployeeList</a>
                         <a className="nav-link" href="/aboutus">About Us</a>
+                        <a className="nav-link" href="/userlist">UserList</a>
                     </div>
                 </div>
             </div>
@@ -66,10 +67,11 @@ const Register =()=>{
                   <input type="text"className="form-control" placeholder="Enter Address"/>      
                 </div>
             </div>
-        </div>
-        <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
             <button className="btn btn-primary" style={{ borderRadius: '20px' }} onClick={Save}>Save</button>
         </div>
+        {/* <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+          
+        </div> */}
         </>
     )
 }

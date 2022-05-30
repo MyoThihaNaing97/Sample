@@ -22,6 +22,7 @@ const EmployeeList = () => {
                             <a className="nav-link" href="/register">Register</a>
                             <a className="nav-link" href="/employee">EmployeeList</a>
                             <a className="nav-link" href="/aboutus">About Us</a>
+                            <a className="nav-link" href="/userlist">UserList</a>
                         </div>
                     </div>
                 </div>
@@ -30,8 +31,8 @@ const EmployeeList = () => {
                 <h1 style={{margin:'20px'}}>Employee List</h1>
             </div>
             <div className="container">
-            <table className="table">
-                <thead>
+            <table className="table ">
+                <thead className="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
