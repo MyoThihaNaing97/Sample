@@ -1,12 +1,34 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { useHistory,Link } from "react-router-dom";
 import { Employee } from "./Employee";
+import axios from "axios";
 
 const EmployeeList = () => {
     // const history =useHistory();
     // gotoProfile=()=>{
     //     history.push("/profile",Employee)
     // };
+    const[userlist,SetUserList]=useState([]);
+
+    useEffect(()=>{
+        (async () => {
+            const result = await axios.get("http://localhost:4000/api/v1/employee/getEmployeeList", {params: {username: 'mgmg'}});
+    
+            if(result.status === 200) {
+                SetUserList(result.data.data)
+            }
+        })()
+    });
+
+    // useEffect(()=>{
+    //     (async () => {
+    //         const result = await axios.get("http://localhost:4000/api/v1/employee/getEmployeeList", {params: {id:1}});
+    
+    //         if(result.status === 200) {
+    //             SetUserList(result.data.data)
+    //         }
+    //     })()
+    // });
     return (
         
         <>
@@ -38,30 +60,32 @@ const EmployeeList = () => {
                         <th>Name</th>
                         <th>FullName</th>
                         <th>Email</th>
-                        <th>Phno</th>
-                        <th>Address</th>
+                        <th>Department</th>
                         <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {Employee.map((data,index)=>{       
-                        return(
-                            <tr key={index}>
-                            <td>{data.id}</td>
-                            <td>{data.username}</td>
-                            <td>{data.fullname}</td>
-                            <td>{data.email}</td>
-                            <td>{data.ph_no}</td>
-                            <td>{data.address}</td>
-                            <td><Link to={{
-                                pathname:'/profile',
-                                state: data
-                            }}>Detail</Link>
-                            </td>
-                        </tr>
-                        )         
-                    })}
-                </tbody>
+                {userlist.length > 0 &&
+                        userlist.map((data, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{data.username}</td>
+                                    <td>{data.fullname}</td>
+                                    <td>{data.email}</td>
+                                    <td>{data.department}</td>
+                                    {/* <td>
+                                        <img src={data.avatar}/>
+                                    </td> */}
+                                    <td><Link to={{
+                                        pathname: '/profile',
+                                        state: data
+                                    }}>Detail</Link>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
             </table>
         </div>
             

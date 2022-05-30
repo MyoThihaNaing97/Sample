@@ -56,6 +56,7 @@ const ProfileIndex = () => {
                             <a className="nav-link" href="/register">Register</a>
                             <a className="nav-link" href="/employee">EmployeeList</a>
                             <a className="nav-link" href="/aboutus">About Us</a>
+                            <a className="nav-link" href="/userlist">UserList</a>
                         </div>
                     </div>
                 </div>
@@ -63,37 +64,37 @@ const ProfileIndex = () => {
             <div style={{display:'flex',flexDirection:'column', alignItems:'center'}}>
                 <h1>Employee Detail</h1>
             </div>
-            <div style={{display:'grid',flexDirection:'column', alignItems:'center'}}>
+            <div style={{flexDirection:'column', alignItems:'center'}} className="container">
             <div className="row mb-3 ">
-                    <div className="col">
-                        <label style={{textAlign:'end'}}>FirstName:</label>
+                    <div style={{textAlign:'end'}} className="col">
+                        <label >FirstName:</label>
                     </div>
-                    <div className="col">
+                    <div className="col style={{textAlign:'end'}}">
                         <label style={{textAlign:'left'}}>{user.first_name}</label>
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col">
-                        <label style={{textAlign:'end'}} >LastName:</label>
+                    <div className="col" style={{textAlign:'end'}}>
+                        <label  >LastName:</label>
                     </div>
                     <div className="col">
                         <label style={{textAlign:'left'}}>{user.last_name}</label>
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col">
-                        <label style={{textAlign:'end'}}>Email:</label>
+                    <div className="col" style={{textAlign:'end'}}>
+                        <label >Email:</label>
                     </div>
                     <div className="col">
                         <label style={{textAlign:'left'}}>{user.email}</label>
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col">
-                        <label style={{textAlign:'end'}}>Avatar:</label>
+                    <div className="col" style={{textAlign:'end'}}>
+                        <label >Avatar:</label>
                     </div>
                     <div className="col">
-                        <img src={user.avatar} style={{textAlign:'end'}}/>
+                        <img src={user.avatar} />
                     </div>
                 </div>
                 {/* <div className="row mb-3">
