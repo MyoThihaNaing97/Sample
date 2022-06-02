@@ -44,7 +44,7 @@ const ProfileIndex = () => {
     // const [address, SetAddress] = useState("");
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/"><img src="logo192.png" style={{ width: "50px", height: "50px" }}></img></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@ const ProfileIndex = () => {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> */}
             <div style={{display:'flex',flexDirection:'column', alignItems:'center'}}>
                 <h1>Employee Detail</h1>
             </div>

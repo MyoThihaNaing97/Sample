@@ -15,15 +15,12 @@ const Main = () => {
                         <a className="nav-link" href="/register">Register</a>
                         <a className="nav-link" href="/employee">EmployeeList</a>
                         <a className="nav-link" href="/aboutus">About Us</a>
-                        <a className="nav-link" href="/aboutus">UserList</a>
+                        <a className="nav-link" href="/userlist">UserList</a>
                     </div>
                 </div>
             </div>
         </nav>
-        <div style={{display:'flex',flexDirection:'column', alignItems:"center"}}>
-            <h1>Welcome to Home</h1>
-            
-        </div>
+   
         </>
 
     )

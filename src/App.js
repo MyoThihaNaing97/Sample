@@ -23,6 +23,8 @@ const AboutUs =React.lazy(()=> import("./view/register/AboutUs"));
 const Profile = React.lazy(() => import("./view/profile/profileIndex"));
 const Error =React.lazy(()=> import("./view/error/Error"));
 const UserList =React.lazy(()=>import("./view/employee/UserList"));
+const Home =React.lazy(()=>import('./view/student/HomeIndex.js'));
+const Edit=React.lazy(()=> import('./view/register/Edit'));
 
 const App = () => {
   // const [Employee,setEmployee] = useState([
@@ -72,22 +74,26 @@ const App = () => {
   //    setView(data);
   // }
   return (
+    <>
+    <Main/>
     <BrowserRouter>
       <React.Suspense fallback={Loading}>
         <Switch>
-          <Route exact path='/' component={Main} />
+          <Route exact path='/' component={Home} />
           <Route path='/register'component={Register}/>
           <Route path='/employee' component={EmployeeList} />
           <Route path='/aboutus' component={AboutUs}/>
           <Route path="/profile" component={Profile} />
           <Route path="/404error" component={Error}/>
           <Route path="/userlist" component={UserList}/>
+          <Route path="/employee/edit" component={Edit}/>
           <Route>
             <Redirect to="/404error" />
           </Route>
         </Switch>
       </React.Suspense>
     </BrowserRouter>
+    </>
   )
   // <BrowserRouter>
   //   <React.Suspense fallback={Loading}>

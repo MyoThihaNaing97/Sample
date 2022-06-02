@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -62,10 +62,11 @@ const Register = () => {
       };
       const result = await axios.post("http://localhost:4000/api/v1/employee/createEmployee", obj)
       console.log(result);
+      alert("Register Successfully");
   }
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             <img
@@ -104,7 +105,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
       <div
         style={{
           display: "flex",
@@ -114,7 +115,7 @@ const Register = () => {
       >
         <h1>Employee Registration</h1>
       </div>
-      <div
+      <form
         style={{
           display: "flex",
           flexDirection: "column",
@@ -133,6 +134,7 @@ const Register = () => {
               name="username"
               value={username}
               onChange={(e) => handleChangeUserName(e)}
+              required
             />
           </div>
         </div>
@@ -148,6 +150,7 @@ const Register = () => {
               name="fullname"
               value={fullname}
               onChange={(e) => handleChangeFullName(e)}
+              required
             />
           </div>
         </div>
@@ -179,6 +182,7 @@ const Register = () => {
               name="ph_no"
               value={ph_no}
               onChange={(e) => handleChangePhNo(e)}
+              required
             />
           </div>
         </div>
@@ -194,6 +198,7 @@ const Register = () => {
               name="department"
               value={department}
               onChange={(e) => handleChangeDepartment(e)}
+              required
             />
           </div>
         </div>
@@ -209,13 +214,14 @@ const Register = () => {
               name="address"
               value={address}
               onChange={(e) => handleChangeAddress(e)}
+              required
             />
           </div>
         </div>
-        <button className="btn btn-primary" style={{ borderRadius: "20px" }} onClick={(e)=>Save(e)}>
+        <Link className="btn btn-primary" style={{ borderRadius: "20px" }} to="/employee" onClick={(e)=>Save(e)}>
           Save
-        </button>
-      </div>
+        </Link>
+      </form>
       {/* <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
           
         </div> */}

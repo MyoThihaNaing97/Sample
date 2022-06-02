@@ -32,7 +32,7 @@ const EmployeeList = () => {
     return (
         
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/"><img src="logo192.png" style={{ width: "50px", height: "50px" }}></img></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@ const EmployeeList = () => {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
                 <h1 style={{margin:'20px'}}>Employee List</h1>
             </div>
@@ -61,7 +61,7 @@ const EmployeeList = () => {
                         <th>FullName</th>
                         <th>Email</th>
                         <th>Department</th>
-                        <th>Detail</th>
+                        <th style={{textAlign:'center'}}>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,10 +77,12 @@ const EmployeeList = () => {
                                     {/* <td>
                                         <img src={data.avatar}/>
                                     </td> */}
-                                    <td><Link to={{
+                                    <td style={{textAlign:'center'}}><Link to={{
                                         pathname: '/profile',
                                         state: data
                                     }}>Detail</Link>
+                                        <Link style={{marginLeft:'20px'}} to='/edit'>Edit</Link>
+                                        <Link style={{marginLeft:'20px'}} to=''>Delete</Link>
                                     </td>
                                 </tr>
                             )
